@@ -67,7 +67,7 @@ export class ProfileComponent {
       description: 'Scanner de ports réseau multi-threadé avec détection automatique de services. Développé en Python avec support Docker complet, tests unitaires et documentation professionnelle. Projet réalisé dans le cadre de mes études à l\'ESGI.',
       technologies: ['Python', 'Docker', 'Multi-threading', 'Socket', 'Pytest'],
       category: 'security-tools',
-      githubUrl: 'https://github.com/nikirezi/certixscan-port-scanner',
+      githubUrl: 'https://github.com/Noella00Ikirezi/certixscan-port-scanner',
       icon: '🔍'
     }
   ];
