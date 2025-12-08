@@ -1,0 +1,221 @@
+<div class="portfolio-container">
+  <!-- Animated Background -->
+  <div class="matrix-bg"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar">
+    <div class="logo">
+      <span class="logo-bracket">&lt;</span>
+      <span class="logo-text">NOELLA</span>
+      <span class="logo-bracket">/&gt;</span>
+    </div>
+    <div class="nav-links">
+      <a (click)="scrollToSection('about')" class="nav-link">About</a>
+      <a (click)="scrollToSection('skills')" class="nav-link">Skills</a>
+      <a (click)="scrollToSection('projects')" class="nav-link">Projects</a>
+      <a (click)="scrollToSection('certifications')" class="nav-link">Certifications</a>
+      <a (click)="scrollToSection('contact')" class="nav-link">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="about">
+    <div class="hero-content">
+      <div class="glitch-container">
+        <h1 class="hero-title glitch" [attr.data-text]="profileName">{{ profileName }}</h1>
+      </div>
+      <p class="hero-tagline">
+        <span class="typing-text">{{ tagline }}</span>
+      </p>
+      <p class="hero-bio">{{ bio }}</p>
+
+      <div class="cta-buttons">
+        <button (click)="scrollToSection('projects')" class="btn btn-primary">
+          <span class="btn-icon">🎯</span>
+          View Projects
+        </button>
+        <button (click)="scrollToSection('contact')" class="btn btn-secondary">
+          <span class="btn-icon">📧</span>
+          Get In Touch
+        </button>
+      </div>
+
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <span class="terminal-button red"></span>
+          <span class="terminal-button yellow"></span>
+          <span class="terminal-button green"></span>
+          <span class="terminal-title">noella&#64;esgi:~$</span>
+        </div>
+        <div class="terminal-body">
+          <p class="terminal-line"><span class="terminal-prompt">$</span> whoami</p>
+          <p class="terminal-output">Noella Rezi - Cybersecurity Student @ ESGI</p>
+          <p class="terminal-line"><span class="terminal-prompt">$</span> cat skills.txt</p>
+          <p class="terminal-output">Python | Network Security | Docker | Penetration Testing</p>
+          <p class="terminal-line"><span class="terminal-prompt">$</span> ls projects/</p>
+          <p class="terminal-output">certixscan-port-scanner/</p>
+          <p class="terminal-line"><span class="terminal-prompt">$</span> ./deploy.sh</p>
+          <p class="terminal-output blink">▋ Deploying portfolio...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills-section" id="skills">
+    <h2 class="section-title">
+      <span class="title-bracket">&lt;</span>
+      Technical Arsenal
+      <span class="title-bracket">/&gt;</span>
+    </h2>
+
+    <div class="skills-grid">
+      <div class="skill-card" *ngFor="let skill of skills">
+        <div class="skill-header">
+          <h3 class="skill-name">{{ skill.name }}</h3>
+          <span class="skill-category">{{ skill.category }}</span>
+        </div>
+        <div class="skill-bar-container">
+          <div class="skill-bar" [style.width.%]="skill.level">
+            <span class="skill-percentage">{{ skill.level }}%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects-section" id="projects">
+    <h2 class="section-title">
+      <span class="title-bracket">&lt;</span>
+      Security Projects
+      <span class="title-bracket">/&gt;</span>
+    </h2>
+
+    <!-- Project Filters -->
+    <div class="project-filters">
+      <button
+        class="filter-btn"
+        [class.active]="selectedCategory === 'all'"
+        (click)="filterProjects('all')">
+        All Projects
+      </button>
+      <button
+        class="filter-btn"
+        [class.active]="selectedCategory === 'penetration-testing'"
+        (click)="filterProjects('penetration-testing')">
+        Pentesting
+      </button>
+      <button
+        class="filter-btn"
+        [class.active]="selectedCategory === 'malware-analysis'"
+        (click)="filterProjects('malware-analysis')">
+        Malware Analysis
+      </button>
+      <button
+        class="filter-btn"
+        [class.active]="selectedCategory === 'security-tools'"
+        (click)="filterProjects('security-tools')">
+        Security Tools
+      </button>
+      <button
+        class="filter-btn"
+        [class.active]="selectedCategory === 'research'"
+        (click)="filterProjects('research')">
+        Research
+      </button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of getFilteredProjects()">
+        <div class="project-icon">{{ project.icon }}</div>
+        <h3 class="project-title">{{ project.title }}</h3>
+        <p class="project-description">{{ project.description }}</p>
+
+        <div class="project-tech">
+          <span class="tech-tag" *ngFor="let tech of project.technologies">{{ tech }}</span>
+        </div>
+
+        <div class="project-links">
+          <a [href]="project.githubUrl" *ngIf="project.githubUrl" target="_blank" class="project-link">
+            <span class="link-icon">&#60;/&#62;</span> GitHub
+          </a>
+          <a [href]="project.demoUrl" *ngIf="project.demoUrl" target="_blank" class="project-link">
+            <span class="link-icon">🚀</span> Demo
+          </a>
+        </div>
+
+        <div class="project-overlay"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="certifications-section" id="certifications">
+    <h2 class="section-title">
+      <span class="title-bracket">&lt;</span>
+      Certifications
+      <span class="title-bracket">/&gt;</span>
+    </h2>
+
+    <div class="certifications-grid">
+      <div class="cert-card" *ngFor="let cert of certifications">
+        <div class="cert-icon">{{ cert.icon }}</div>
+        <h3 class="cert-name">{{ cert.name }}</h3>
+        <p class="cert-issuer">{{ cert.issuer }}</p>
+        <span class="cert-year">{{ cert.year }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <h2 class="section-title">
+      <span class="title-bracket">&lt;</span>
+      Get In Touch
+      <span class="title-bracket">/&gt;</span>
+    </h2>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📧</div>
+        <h3>Email</h3>
+        <a [href]="'mailto:' + contact.email">{{ contact.email }}</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">💻</div>
+        <h3>GitHub</h3>
+        <a [href]="'https://' + contact.github" target="_blank">{{ contact.github }}</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">💼</div>
+        <h3>LinkedIn</h3>
+        <a [href]="'https://' + contact.linkedin" target="_blank">{{ contact.linkedin }}</a>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🐦</div>
+        <h3>Twitter</h3>
+        <a [href]="'https://twitter.com/' + contact.twitter.substring(1)" target="_blank">{{ contact.twitter }}</a>
+      </div>
+    </div>
+
+    <div class="footer-terminal">
+      <div class="terminal-line">
+        <span class="terminal-prompt">$</span> echo "Thanks for visiting! Let's build something secure together."
+      </div>
+      <div class="terminal-output">
+        Thanks for visiting! Let's build something secure together.
+      </div>
+      <div class="terminal-line">
+        <span class="terminal-prompt">$</span> <span class="blink">▋</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 Certix Security. Built with Angular & Passion for Security.</p>
+    <p class="footer-quote">"In security, there are no final frontiers."</p>
+  </footer>
+</div>
