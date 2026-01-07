@@ -32,15 +32,15 @@ interface Certification {
   styleUrl: './profile.component.scss'
 })
 export class ProfileComponent {
-  profileName = 'Noella Rezi';
+  profileName = 'Noella IKIREZI';
   tagline = 'Cybersecurity Student | ESGI Master SI | Aspiring Security Expert';
   bio = 'Étudiante en Master SI à l\'ESGI, passionnée par la cybersécurité et l\'analyse de vulnérabilités. Je développe mes compétences en sécurité offensive, analyse de malware et développement d\'outils de sécurité.';
 
   contact = {
-    email: 'noella.rezi@esgi.fr',
-    github: 'github.com/nikirezi',
-    linkedin: 'linkedin.com/in/noella-rezi',
-    twitter: '@noella_rezi'
+    email: 'noella.ikirezi@esgi.fr',
+    github: 'github.com/Noella00Ikirezi',
+    linkedin: 'linkedin.com/in/noella-ikirezi',
+    twitter: '@noella_ikirezi'
   };
 
   skills: Skill[] = [
