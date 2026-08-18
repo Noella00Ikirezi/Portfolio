@@ -5,7 +5,7 @@ interface Project {
   title: string;
   description: string;
   technologies: string[];
-  category: 'penetration-testing' | 'malware-analysis' | 'security-tools' | 'research';
+  category: 'penetration-testing' | 'malware-analysis' | 'security-tools' | 'grc-audit' | 'research';
   githubUrl?: string;
   demoUrl?: string;
   icon: string;
@@ -62,6 +62,31 @@ export class ProfileComponent {
   ];
 
   projects: Project[] = [
+    {
+      title: 'Petrix - Plateforme d\'audit cybersécurité',
+      description: 'Projet annuel ESGI 4SI4 (binôme). Plateforme SaaS self-hosted pour auditeurs : audit de durcissement Linux/macOS/Windows (80+ contrôles ANSSI/CIS), scoring de conformité, veille CERT-FR, gestion des vulnérabilités, RBAC 4 niveaux et rapports générés par IA.',
+      technologies: ['FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'Celery', 'Redis', 'Docker'],
+      category: 'grc-audit',
+      githubUrl: 'https://github.com/Noella00Ikirezi/Petrix',
+      demoUrl: 'https://hco.noellahome.org',
+      icon: '🛡️'
+    },
+    {
+      title: 'GRC Platform',
+      description: 'Plateforme de Gouvernance, Risque et Conformité unifiée : gestion des risques, suivi de conformité et administration centralisée via une API REST documentée.',
+      technologies: ['FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'Docker'],
+      category: 'grc-audit',
+      githubUrl: 'https://github.com/Noella00Ikirezi/grc-platform',
+      icon: '📋'
+    },
+    {
+      title: 'Certix - ISO 27001 Audit Console',
+      description: 'Application desktop (PySide6) d\'audit de conformité ISO 27001 Annexe A pour systèmes Windows et Linux : 14 contrôles clés, tableau de bord temps réel, export des résultats en JSON.',
+      technologies: ['Python', 'PySide6', 'ISO 27001'],
+      category: 'grc-audit',
+      githubUrl: 'https://github.com/Noella00Ikirezi/Certix',
+      icon: '✅'
+    },
     {
       title: 'CertixScan - Port Scanner',
       description: 'Scanner de ports réseau multi-threadé avec détection automatique de services. Développé en Python avec support Docker complet, tests unitaires et documentation professionnelle. Projet réalisé dans le cadre de mes études à l\'ESGI.',

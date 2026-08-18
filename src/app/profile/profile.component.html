@@ -102,6 +102,12 @@
       </button>
       <button
         class="filter-btn"
+        [class.active]="selectedCategory === 'grc-audit'"
+        (click)="filterProjects('grc-audit')">
+        GRC & Audit
+      </button>
+      <button
+        class="filter-btn"
         [class.active]="selectedCategory === 'penetration-testing'"
         (click)="filterProjects('penetration-testing')">
         Pentesting
