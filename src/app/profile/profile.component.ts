@@ -68,7 +68,7 @@ export class ProfileComponent {
       technologies: ['FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'Celery', 'Redis', 'Docker'],
       category: 'grc-audit',
       githubUrl: 'https://github.com/Noella00Ikirezi/Petrix',
-      demoUrl: 'https://hco.noellahome.org',
+      demoUrl: 'https://petrix.noellahome.org',
       icon: '🛡️'
     },
     {
